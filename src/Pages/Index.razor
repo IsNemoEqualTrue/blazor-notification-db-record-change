@@ -1,0 +1,61 @@
+﻿@page "/"
+
+@using DataBaseRecordChaneNotificationWithBlazor.Data
+
+@inject IWeatherForecastService ForecastService
+@implements IDisposable
+
+<h1>Weather forecast</h1>
+
+<p>Immediate client notification on record table change with Blazor</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>Temp. (C)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var forecast in forecasts)
+        {
+            <tr>
+                <td>@forecast.City</td>
+                <td>@forecast.Temperature</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    IList<WeatherForecast> forecasts;
+
+    protected override void OnInitialized()
+    {
+        this.ForecastService.OnWeatherForecastChanged += this.WeatherForecastChanged;
+        this.forecasts = this.ForecastService.GetForecast();
+    }
+
+    private async void WeatherForecastChanged(object sender, WeatherForecastChangeEventArgs args)
+    {
+        var recordToupdate = this.forecasts.FirstOrDefault(x => x.City == args.NewWeatherForecast.City);
+        if (recordToupdate == null)
+        {
+            this.forecasts.Add(args.NewWeatherForecast);
+        }
+        else
+        {
+            recordToupdate.Temperature = args.NewWeatherForecast.Temperature;
+        }
+
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        this.ForecastService.OnWeatherForecastChanged += this.WeatherForecastChanged;
+    }
+}
