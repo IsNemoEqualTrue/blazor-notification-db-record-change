@@ -15,6 +15,7 @@ CREATE TABLE [dbo].[WeatherForecasts](
 ```
 
 ## Subject
+singleton instance code wrapping SqlTableDependency:
 
 ```C#
     public class WeatherForecastService : IWeatherForecastService, IDisposable
@@ -84,6 +85,7 @@ CREATE TABLE [dbo].[WeatherForecasts](
 ```
 
 ## Observer
+Index.razor page code:
 
 ```C#
 @page "/"
