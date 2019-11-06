@@ -1,5 +1,5 @@
 # Blazor immediate client notification on database record change
-Blazor notification on database recond changes
+This example uses .NET CORE 3.0 Blazor server side to real-time update a HTML page on any database record changes.
 
 <img src="https://github.com/christiandelbianco/blazor-notification-db-record-change/blob/master/img/2019-11-03at21-05-44.gif" />
 
@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[WeatherForecasts](
 ```
 
 ## Subject
-singleton instance code wrapping SqlTableDependency:
+Singleton instance wrapping SqlTableDependency and forwarding record table changes to subscribers:
 
 ```C#
     public class WeatherForecastService : IWeatherForecastService, IDisposable
@@ -84,8 +84,19 @@ singleton instance code wrapping SqlTableDependency:
     }
 ```
 
+Registration as Singleton:
+
+```C#
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    ...
+    services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
+}
+```
+
 ## Observer
-Index.razor page code:
+Index.razor page code (event subscriber):
 
 ```C#
 @page "/"
@@ -150,3 +161,4 @@ Index.razor page code:
     }
 }
 ```
+
