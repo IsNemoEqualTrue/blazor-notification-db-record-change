@@ -1,4 +1,4 @@
-# Blazor immediate client notification on database record change
+# Blazor immediate client notifications on database record change
 This example uses .NET CORE 3.0 Blazor server side to real-time update a HTML page on any database record changes.
 
 <img src="https://github.com/christiandelbianco/blazor-notification-db-record-change/blob/master/img/2019-11-03at21-05-44.gif" />
