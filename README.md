@@ -162,4 +162,4 @@ Index.razor page code (event subscriber):
 }
 ```
 
-More info on [https://github.com/christiandelbianco/monitor-table-change-with-sqltabledependency]
+More info on https://github.com/christiandelbianco/monitor-table-change-with-sqltabledependency.
