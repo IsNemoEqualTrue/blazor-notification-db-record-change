@@ -6,6 +6,7 @@ This example uses .NET CORE 3.0 Blazor server side to real-time update a HTML pa
 Based on the observer design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods. 
 
 ## Database table
+Table for which I want to receive notifications every time its content changes:
 
 ```SQL
 CREATE TABLE [dbo].[WeatherForecasts](
