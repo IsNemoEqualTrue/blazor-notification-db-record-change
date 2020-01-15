@@ -1,9 +1,11 @@
 # Blazor client notifications on database record change
 This example uses .NET CORE 3.0 Blazor server side to real-time update a HTML page on any database record changes.
 
-<img src="https://github.com/christiandelbianco/blazor-notification-db-record-change/blob/master/2019-11-03at21-05-44.gif" />
+<img src="https://github.com/christiandelbianco/blazor-notification-db-record-change/blob/master/Schema.png" />
 
 Based on the observer design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods. 
+
+<img src="https://github.com/christiandelbianco/blazor-notification-db-record-change/blob/master/2019-11-03at21-05-44.gif" />
 
 ## Database table
 Table for which I want to receive notifications every time its content changes:
